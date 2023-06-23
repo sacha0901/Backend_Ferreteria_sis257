@@ -14,41 +14,31 @@ export class ProductoController {
 
   @Post()
   @ApiCreatedResponse({ type: ProductoEntity })
-  @ApiOperation({ summary: 'Crea un nuevo producto' })
   create(@Body() createProductoDto: CreateProductoDto) {
     return this.productoService.create(createProductoDto);
   }
 
   @Get()
   @ApiOkResponse({ type: ProductoEntity, isArray: true })
-  @ApiOperation({ summary: 'Obtiene la lista de productos' })
   findAll() {
     return this.productoService.findAll();
   }
 
   @Get(':id')
   @ApiOkResponse({ type: ProductoEntity })
-  @ApiOperation({ summary: 'Obtiene un producto con base al identificador' })
-  findOne(@Param('id', ParseIntPipe) id: number) {
-    return this.productoService.findOne(id);
+  findOne(@Param('id') id: string) {
+    return this.productoService.findOne(+id);
   }
 
   @Patch(':id')
   @ApiOkResponse({ type: ProductoEntity })
-  @ApiOperation({
-    summary: 'Actualiza los datos de un producto con base al identificador',
-  })
-  update(
-    @Param('id', ParseIntPipe) id: number,
-    @Body() updateProductoDto: UpdateProductoDto,
-  ) {
-    return this.productoService.update(id, updateProductoDto);
+  update(@Param('id') id: string, @Body() updateProductoDto: UpdateProductoDto) {
+    return this.productoService.update(+id, updateProductoDto);
   }
 
   @Delete(':id')
   @ApiOkResponse()
-  @ApiOperation({ summary: 'Elimina un producto con base al identificador' })
-  remove(@Param('id', ParseIntPipe) id: number) {
-    return this.productoService.remove(id);
+  remove(@Param('id') id: string) {
+    return this.productoService.remove(+id);
   }
 }

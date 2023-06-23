@@ -1,9 +1,13 @@
-import { Column, CreateDateColumn, Entity, PrimaryGeneratedColumn, UpdateDateColumn } from "typeorm";
+import { CategoriaEntity } from "src/categoria/entities/categoria.entity";
+import { Column, CreateDateColumn, Entity, JoinColumn, ManyToOne, PrimaryGeneratedColumn, UpdateDateColumn } from "typeorm";
 @Entity('productos')
 export class ProductoEntity {
     
   @PrimaryGeneratedColumn()
   id: number;
+
+  @Column({ name: 'id_categoria' })
+  idCategoria: number;
 
   @Column()
   codigo: string;
@@ -17,6 +21,7 @@ export class ProductoEntity {
   @Column()
   precio: number;
 
+
   @Column({name:'existencia_producto'})
   existenciaProducto: number;
 
@@ -26,4 +31,8 @@ export class ProductoEntity {
 
   @UpdateDateColumn({ name: 'fecha_modificacion' })
   fechaModificacion: Date;
+
+  @ManyToOne(() => CategoriaEntity, (categoria) => categoria.productos)
+  @JoinColumn({ name: 'id_categoria', referencedColumnName: 'id' })
+  categoria: CategoriaEntity;
 }

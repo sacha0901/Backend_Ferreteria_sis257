@@ -12,15 +12,17 @@ export class ProductoService {
     private productoRepository: Repository<ProductoEntity>,
   ) {}
 
-  async create(
-    createProductoDto: CreateProductoDto,
-  ): Promise<ProductoEntity> {
+  async create(createProductoDto: CreateProductoDto): Promise<ProductoEntity> {
     const existe = await this.productoRepository.findOneBy({
       codigo: createProductoDto.codigo.trim(),
+      idCategoria: createProductoDto.idCategoria,
+
     });
 
     if (existe) {
-      throw new ConflictException(`El producto ${createProductoDto.codigo} ya existe.`);
+      throw new ConflictException(
+        `El producto ${createProductoDto.codigo} ya existe para la categoria.`,
+      );
     }
 
     return this.productoRepository.save({
@@ -33,11 +35,11 @@ export class ProductoService {
   }
 
   async findAll(): Promise<ProductoEntity[]> {
-    return this.productoRepository.find();
+    return this.productoRepository.find({ relations: { categoria: true } });
   }
 
   async findOne(id: number): Promise<ProductoEntity> {
-    const producto = await this.productoRepository.findOneBy({id});
+    const producto = await this.productoRepository.findOne({ where: {id}, relations: {categoria: true}});
 
     if (!producto) {
       throw new NotFoundException(`El producto ${id} no existe.`);
