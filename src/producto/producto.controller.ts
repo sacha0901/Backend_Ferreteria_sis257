@@ -6,8 +6,8 @@ import { ApiBearerAuth, ApiCreatedResponse, ApiOkResponse, ApiOperation, ApiTags
 import { ProductoEntity } from './entities/producto.entity';
 import { JwtAuthGuard } from 'src/auth/guards/jwt-auth.guard';
 @ApiTags('productos')
-//@ApiBearerAuth()
-//@UseGuards(JwtAuthGuard)
+@ApiBearerAuth()
+@UseGuards(JwtAuthGuard)
 @Controller('productos')
 export class ProductoController {
   constructor(private readonly productoService: ProductoService) {}
