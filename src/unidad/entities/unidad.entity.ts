@@ -7,7 +7,7 @@ export class UnidadEntity {
     @PrimaryGeneratedColumn()
     id: number;
 
-    @Column({ length: 30 })
+    @Column()
     descripcion: string;
 
     @CreateDateColumn({ name: 'fecha_creacion' })
