@@ -10,6 +10,7 @@ import { VentaModule } from './venta/venta.module';
 import { UsuarioModule } from './usuario/usuario.module';
 import { AuthModule } from './auth/auth.module';
 import { CategoriaModule } from './categoria/categoria.module';
+import { UnidadModule } from './unidad/unidad.module';
 
 @Module({
   imports: [
@@ -32,6 +33,7 @@ import { CategoriaModule } from './categoria/categoria.module';
     UsuarioModule,
     AuthModule,
     CategoriaModule,
+    UnidadModule,
 
   ],
   controllers: [AppController],
