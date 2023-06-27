@@ -40,4 +40,12 @@ export class CreateProductoDto {
     @IsNotEmpty({ message: 'El campo existenciaProducto no debe ser vacío' })
     @IsNumber({}, { message: 'El campo existenciaProducto deber ser de tipo numérico' })
     readonly existenciaProducto: number;
+
+    @ApiProperty()
+    @IsNotEmpty({ message: 'El campo imagen no debe ser vacío' })
+    @IsString({ message: 'El campo imagen debe ser de tipo cadena' })
+    @MaxLength(10000, {
+        message: 'El campo imagen no debe ser mayor a 10000 caracteres',
+    })
+    readonly urlImagen: string;
 }

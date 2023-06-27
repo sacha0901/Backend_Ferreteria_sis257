@@ -32,6 +32,7 @@ export class ProductoService {
       unidad: createProductoDto.unidad.trim(),
       precio: createProductoDto.precio,
       existenciaProducto: createProductoDto.existenciaProducto,
+      urlImagen: createProductoDto.urlImagen.trim(),
     });
   }
 

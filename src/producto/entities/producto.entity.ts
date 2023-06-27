@@ -25,6 +25,9 @@ export class ProductoEntity {
   @Column({name:'existencia_producto'})
   existenciaProducto: number;
 
+  @Column({name:'url_imagen'})
+  urlImagen: string;
+
 
   @CreateDateColumn({ name: 'fecha_creacion' })
   fechaCreacion: Date;
