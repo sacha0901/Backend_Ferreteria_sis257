@@ -26,6 +26,7 @@ export class ProductoService {
     }
 
     return this.productoRepository.save({
+      idCategoria: createProductoDto.idCategoria,
       codigo: createProductoDto.codigo.trim(),
       descripcion: createProductoDto.descripcion.trim(),
       unidad: createProductoDto.unidad.trim(),
