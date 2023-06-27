@@ -16,6 +16,7 @@ export class ProductoService {
     const existe = await this.productoRepository.findOneBy({
       codigo: createProductoDto.codigo.trim(),
       idCategoria: createProductoDto.idCategoria,
+      idUnidad: createProductoDto.idUnidad
 
     });
 
@@ -29,7 +30,7 @@ export class ProductoService {
       idCategoria: createProductoDto.idCategoria,
       codigo: createProductoDto.codigo.trim(),
       descripcion: createProductoDto.descripcion.trim(),
-      unidad: createProductoDto.unidad.trim(),
+      idUnidad: createProductoDto.idUnidad,
       precio: createProductoDto.precio,
       existenciaProducto: createProductoDto.existenciaProducto,
       urlImagen: createProductoDto.urlImagen.trim(),

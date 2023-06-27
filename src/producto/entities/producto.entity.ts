@@ -1,4 +1,5 @@
 import { CategoriaEntity } from "src/categoria/entities/categoria.entity";
+import { UnidadEntity } from "src/unidad/entities/unidad.entity";
 import { Column, CreateDateColumn, Entity, JoinColumn, ManyToOne, PrimaryGeneratedColumn, UpdateDateColumn } from "typeorm";
 @Entity('productos')
 export class ProductoEntity {
@@ -15,8 +16,8 @@ export class ProductoEntity {
   @Column()
   descripcion: string;
 
-  @Column()
-  unidad: string;
+  @Column({name:'id_unidad'})
+  idUnidad: number;
 
   @Column()
   precio: number;
@@ -38,4 +39,8 @@ export class ProductoEntity {
   @ManyToOne(() => CategoriaEntity, (categoria) => categoria.productos)
   @JoinColumn({ name: 'id_categoria', referencedColumnName: 'id' })
   categoria: CategoriaEntity;
+
+  @ManyToOne(() => UnidadEntity, (unidad) => unidad.productos)
+  @JoinColumn({ name: 'id_unidad', referencedColumnName: 'id' })
+  unidad: UnidadEntity;
 }

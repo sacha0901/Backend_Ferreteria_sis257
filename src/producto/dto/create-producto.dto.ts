@@ -24,12 +24,9 @@ export class CreateProductoDto {
     readonly descripcion: string;
 
     @ApiProperty()
-    @IsNotEmpty({ message: 'El campo unidad no debe ser vacío' })
-    @IsString({ message: 'El campo unidad debe ser de tipo cadena' })
-    @MaxLength(20, {
-        message: 'El campo unidad no debe ser mayor a 20 caracteres',
-    })
-    readonly unidad: string;
+    @IsDefined({ message: 'El campo idUnidad debe estar definido' })
+    @IsNumber({}, { message: 'El campo idUnidad debe ser de tipo numérico' })
+    readonly idUnidad: number;
 
     @ApiProperty()
     @IsNotEmpty({ message: 'El campo precio no debe ser vacío' })
