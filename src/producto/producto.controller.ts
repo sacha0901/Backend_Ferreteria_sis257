@@ -6,12 +6,13 @@ import { ApiBearerAuth, ApiCreatedResponse, ApiOkResponse, ApiOperation, ApiTags
 import { ProductoEntity } from './entities/producto.entity';
 import { JwtAuthGuard } from 'src/auth/guards/jwt-auth.guard';
 @ApiTags('productos')
-@ApiBearerAuth()
-@UseGuards(JwtAuthGuard)
+// @ApiBearerAuth()
+// @UseGuards(JwtAuthGuard)
 @Controller('productos')
 export class ProductoController {
   constructor(private readonly productoService: ProductoService) {}
-
+  @ApiBearerAuth()
+  @UseGuards(JwtAuthGuard)
   @Post()
   @ApiCreatedResponse({ type: ProductoEntity })
   create(@Body() createProductoDto: CreateProductoDto) {
@@ -23,19 +24,23 @@ export class ProductoController {
   findAll() {
     return this.productoService.findAll();
   }
-
+  @ApiBearerAuth()
+  @UseGuards(JwtAuthGuard)
   @Get(':id')
   @ApiOkResponse({ type: ProductoEntity })
   findOne(@Param('id') id: string) {
     return this.productoService.findOne(+id);
   }
-
+  @ApiBearerAuth()
+  @UseGuards(JwtAuthGuard)
   @Patch(':id')
   @ApiOkResponse({ type: ProductoEntity })
   update(@Param('id') id: string, @Body() updateProductoDto: UpdateProductoDto) {
     return this.productoService.update(+id, updateProductoDto);
   }
 
+  @ApiBearerAuth()
+@UseGuards(JwtAuthGuard)
   @Delete(':id')
   @ApiOkResponse()
   remove(@Param('id') id: string) {
