@@ -16,23 +16,18 @@ export class ClienteService {
     createClienteDto: CreateClienteDto,
   ): Promise<ClienteEntity> {
     const existe = await this.clienteRepository.findOneBy({
-      cedulaIdentidad: createClienteDto.cedulaIdentidad.trim(),
-      idVendedor: createClienteDto.idVendedor,
+      nit: createClienteDto.nit.trim(),
+      razonSocial: createClienteDto.razonSocial.trim(),
+      
     });
 
     if (existe) {
-      throw new ConflictException(`El cliente ${createClienteDto.cedulaIdentidad} ya existe.`);
+      throw new ConflictException(`El cliente ${createClienteDto.nit} ya existe.`);
     }
 
     return this.clienteRepository.save({
-      cedulaIdentidad: createClienteDto.cedulaIdentidad.trim(),
-      nombre: createClienteDto.nombre.trim(),
-      apellidoPaterno: createClienteDto.apellidoPaterno.trim(),
-      apellidoMaterno: createClienteDto.apellidoMaterno.trim(),
-      direccion: createClienteDto.direccion.trim(),
-      limiteCredito: createClienteDto.limiteCredito,
-      fechaAsignacion: createClienteDto.fechaAsignacion,
-      idVendedor: createClienteDto.idVendedor,
+      nit: createClienteDto.nit.trim(),
+      razonSocial: createClienteDto.razonSocial.trim(),
     });
   }
 
@@ -41,7 +36,7 @@ export class ClienteService {
   }
 
   async findOne(id: number): Promise<ClienteEntity> {
-    const cliente = await this.clienteRepository.findOneBy({id});
+    const cliente = await this.clienteRepository.findOneBy({ });
     if (!cliente) {
       throw new NotFoundException(`El cliente ${id} no existe.`);
     }

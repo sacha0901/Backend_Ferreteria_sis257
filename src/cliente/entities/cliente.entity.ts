@@ -15,28 +15,10 @@ export class ClienteEntity {
   id: number;
 
   @Column()
-  cedulaIdentidad: string;
+  nit: string;
 
   @Column()
-  nombre: string;
-
-  @Column({ name: 'apellido_paterno' })
-  apellidoPaterno: string;
-
-  @Column({ name: 'apellido_materno' })
-  apellidoMaterno: string;
-
-  @Column()
-  direccion: string;
-
-  @Column({ name: 'limite_credito' })
-  limiteCredito: number;
-
-  @Column({ name: 'fecha_asignacion' })
-  fechaAsignacion: Date;
-
-  @Column({ name: 'id_vendedor' })
-  idVendedor: number;
+  razonSocial: string;
 
   @CreateDateColumn({ name: 'fecha_creacion' })
   fechaCreacion: Date;
