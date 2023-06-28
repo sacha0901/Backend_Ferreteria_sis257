@@ -1,4 +1,4 @@
-import { VendedorEntity } from 'src/vendedor/entities/vendedor.entity';
+
 import {
   Column,
   CreateDateColumn,
@@ -43,10 +43,5 @@ export class ClienteEntity {
 
   @UpdateDateColumn({ name: 'fecha_modificacion' })
   fechaModificacion: Date;
-
-  
-  @ManyToOne(()=>VendedorEntity,(vendedor)=>vendedor.clientes)
-  @JoinColumn({name:'id_vendedor',referencedColumnName:'id'})
-  vendedor: VendedorEntity;
 
 }

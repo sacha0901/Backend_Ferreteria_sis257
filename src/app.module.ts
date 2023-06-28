@@ -1,7 +1,6 @@
 import { Module } from '@nestjs/common';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
-import { VendedorModule } from './vendedor/vendedor.module';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { ConfigModule } from '@nestjs/config';
 import { ClienteModule } from './cliente/cliente.module';
@@ -26,7 +25,6 @@ import { UnidadModule } from './unidad/unidad.module';
       synchronize: true,
       autoLoadEntities: true,
     }),
-    VendedorModule,
     ClienteModule,
     ProductoModule,
     VentaModule,
