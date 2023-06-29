@@ -1,10 +1,12 @@
 
+import { VentaEntity } from 'src/venta/entities/venta.entity';
 import {
   Column,
   CreateDateColumn,
   Entity,
   JoinColumn,
   ManyToOne,
+  OneToMany,
   PrimaryGeneratedColumn,
   UpdateDateColumn
 } from 'typeorm';
@@ -25,5 +27,8 @@ export class ClienteEntity {
 
   @UpdateDateColumn({ name: 'fecha_modificacion' })
   fechaModificacion: Date;
+
+  @OneToMany(() => VentaEntity, venta => venta.cliente)
+    ventas: VentaEntity[];
 
 }

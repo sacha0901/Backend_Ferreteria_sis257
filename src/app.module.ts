@@ -10,6 +10,7 @@ import { UsuarioModule } from './usuario/usuario.module';
 import { AuthModule } from './auth/auth.module';
 import { CategoriaModule } from './categoria/categoria.module';
 import { UnidadModule } from './unidad/unidad.module';
+import { DetalleModule } from './detalle/detalle.module';
 
 @Module({
   imports: [
@@ -32,6 +33,7 @@ import { UnidadModule } from './unidad/unidad.module';
     AuthModule,
     CategoriaModule,
     UnidadModule,
+    DetalleModule,
 
   ],
   controllers: [AppController],

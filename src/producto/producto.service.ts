@@ -38,18 +38,7 @@ export class ProductoService {
   }
 
   async findAll(): Promise<ProductoEntity[]> {
-    return this.productoRepository.find({ relations: { categoria: true ,unidad:true},
-//       select: {
-//         id:true,
-//         descripcion: true, 
-//         precio: true,
-//         urlImagen: true, 
-//         existenciaProducto: true,
-//         categoria: {id: true, descripcion: true},
-//         unidad: {id: true, descripcion: true}
-//       }
-    });
-    
+    return this.productoRepository.find({ relations: { categoria: true ,unidad:true} }); 
   }
 
   async findOne(id: number): Promise<ProductoEntity> {

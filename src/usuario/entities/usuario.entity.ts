@@ -4,10 +4,12 @@ import {
     Column,
     CreateDateColumn,
     Entity,
+    OneToMany,
     PrimaryGeneratedColumn,
     UpdateDateColumn,
   } from 'typeorm';
   import * as bcrypt from 'bcrypt';
+import { VentaEntity } from 'src/venta/entities/venta.entity';
   
   @Entity('usuarios')
   export class UsuarioEntity {
@@ -34,6 +36,9 @@ import {
   
     @UpdateDateColumn({ name: 'fecha_modificacion' })
     fechaModificacion: Date;
+
+    @OneToMany(() => VentaEntity, venta => venta.usuario)
+    ventas: VentaEntity[];
   
     @BeforeInsert()
     @BeforeUpdate()
