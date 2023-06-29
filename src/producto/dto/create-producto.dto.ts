@@ -41,7 +41,7 @@ export class CreateProductoDto {
     @ApiProperty()
     @IsNotEmpty({ message: 'El campo imagen no debe ser vacío' })
     @IsString({ message: 'El campo imagen debe ser de tipo cadena' })
-    @MaxLength(10000, {
+    @MaxLength(5000, {
         message: 'El campo imagen no debe ser mayor a 10000 caracteres',
     })
     readonly urlImagen: string;

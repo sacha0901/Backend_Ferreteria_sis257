@@ -11,10 +11,10 @@ export class ProductoEntity {
   @Column({ name: 'id_categoria' })
   idCategoria: number;
 
-  @Column()
+  @Column({length: 10})
   codigo: string;
 
-  @Column()
+  @Column({length: 30})
   descripcion: string;
 
   @Column({ name: 'id_unidad' })
@@ -27,9 +27,8 @@ export class ProductoEntity {
   @Column({ name: 'existencia_producto' })
   existenciaProducto: number;
 
-  @Column({ name: 'url_imagen' })
+  @Column({ name: 'url_imagen', length: 5000 })
   urlImagen: string;
-
 
   @CreateDateColumn({ name: 'fecha_creacion' })
   fechaCreacion: Date;
