@@ -7,9 +7,9 @@ import { UsuarioEntity } from './entities/usuario.entity';
 import { JwtAuthGuard } from 'src/auth/guards/jwt-auth.guard';
 
 @ApiTags('usuarios')
-@ApiBearerAuth()
+// @ApiBearerAuth()
 // @UseGuards(JwtAuthGuard)
-// @Controller('usuarios')
+@Controller('usuarios')
 export class UsuarioController {
   constructor(private readonly usuarioService: UsuarioService) {}
 
