@@ -8,7 +8,7 @@ export class DetalleEntity {
 
     @Column()
     cantidad: number;
-  
+
     @Column()
     precioUnitario: number;
 
@@ -17,20 +17,20 @@ export class DetalleEntity {
 
     @Column({ name: 'id_venta' })
     idVenta: number;
-  
-    @Column({name:'id_producto'})
+
+    @Column({ name: 'id_producto' })
     idProducto: number;
-  
+
     @CreateDateColumn({ name: 'fecha_creacion' })
     fechaCreacion: Date;
-  
+
     @UpdateDateColumn({ name: 'fecha_modificacion' })
     fechaModificacion: Date;
-  
+
     @ManyToOne(() => VentaEntity, (venta) => venta.detalles)
     @JoinColumn({ name: 'id_venta', referencedColumnName: 'id' })
     venta: VentaEntity;
-  
+
     @ManyToOne(() => ProductoEntity, (producto) => producto.detalles)
     @JoinColumn({ name: 'id_producto', referencedColumnName: 'id' })
     producto: ProductoEntity;

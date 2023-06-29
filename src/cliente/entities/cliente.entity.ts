@@ -4,8 +4,6 @@ import {
   Column,
   CreateDateColumn,
   Entity,
-  JoinColumn,
-  ManyToOne,
   OneToMany,
   PrimaryGeneratedColumn,
   UpdateDateColumn
@@ -16,10 +14,10 @@ export class ClienteEntity {
   @PrimaryGeneratedColumn()
   id: number;
 
-  @Column()
+  @Column({ length: 30 })
   nit: string;
 
-  @Column()
+  @Column({ length: 30 })
   razonSocial: string;
 
   @CreateDateColumn({ name: 'fecha_creacion' })
@@ -29,6 +27,6 @@ export class ClienteEntity {
   fechaModificacion: Date;
 
   @OneToMany(() => VentaEntity, venta => venta.cliente)
-    ventas: VentaEntity[];
+  ventas: VentaEntity[];
 
 }

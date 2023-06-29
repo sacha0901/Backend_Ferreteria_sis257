@@ -8,7 +8,7 @@ export class VentaEntity {
     @PrimaryGeneratedColumn()
     id: number;
 
-    @Column()
+    @Column({length: 20})
     transaccion: string;
 
     @Column()
