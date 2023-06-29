@@ -8,8 +8,8 @@ import { JwtAuthGuard } from 'src/auth/guards/jwt-auth.guard';
 
 @ApiTags('usuarios')
 @ApiBearerAuth()
-@UseGuards(JwtAuthGuard)
-@Controller('usuarios')
+// @UseGuards(JwtAuthGuard)
+// @Controller('usuarios')
 export class UsuarioController {
   constructor(private readonly usuarioService: UsuarioService) {}
 
